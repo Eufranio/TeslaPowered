@@ -228,8 +228,8 @@ public class Layout {
         public Builder overlay(Layout layout, int index) {
             Preconditions.checkElementIndex(index, capacity);
             int rows = layout.getDimension().getRows(), columns = layout.getDimension().getColumns();
-            Preconditions.checkState(index % this.columns + columns < this.columns, "Layout overflows horizontally.");
-            Preconditions.checkState(index / this.rows + rows < this.rows, "Layout overflows vertically.");
+            Preconditions.checkState(index % this.columns + columns <= this.columns, "Layout overflows horizontally.");
+            Preconditions.checkState(index / this.rows + rows <= this.rows, "Layout overflows vertically.");
             for (int r = 0; r < rows; r++) {
                 for (int c = 0; c < columns; c++) {
                     Element element = layout.elements.get(r * columns + c);
